@@ -177,4 +177,4 @@ The app uses built-in Python libraries like `tkinter`, `pathlib`, `subprocess`, 
 ## License
 This script is open-source under the MIT License. Use and modify freely.
 
-For questions, refer to the code comments or experiment with the GUI. Enjoy extending your Imagine videos!"
+For questions, refer to the code comments or experiment with the GUI. Enjoy extending your Imagine videos!
