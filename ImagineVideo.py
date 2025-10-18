@@ -59,7 +59,7 @@ class VideoEditorUI:
     def __init__(self, root):
         """Initialize the VideoEditorUI application."""
         self.root = root
-        self.root.title("Imagine Video Frame Editor")
+        self.root.title("xAI Video Frame Editor")
         self.root.geometry("900x600")
         self.root.minsize(700, 500)
 
@@ -162,6 +162,7 @@ class VideoEditorUI:
         """Open directory browser and load videos from selected directory."""
         directory = filedialog.askdirectory(title="Select Video Directory")
         if directory:
+            self.stop_watching()  # Stop any previous watcher
             self.video_dir.set(directory)
             self.load_videos()
     
@@ -206,9 +207,8 @@ class VideoEditorUI:
         except Exception as e:
             messagebox.showerror("Error", f"Failed to load videos: {str(e)}")
 
-        # Start file watching if not already watching
-        if not self.watching:
-            self.start_file_watching()
+        # Always restart file watching for the (possibly new) directory
+        self.start_file_watching()
 
     def get_max_counter(self, output_dir: str, pattern: str) -> int:
         """Get the maximum existing counter from files in the directory."""
